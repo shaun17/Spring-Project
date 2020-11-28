@@ -6,8 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="redis-project" />
         <module name="multiple-db-source" />
+        <module name="redis-project" />
       </profile>
     </annotationProcessing>
   </component>
