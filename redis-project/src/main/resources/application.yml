@@ -5,8 +5,9 @@ spring:
     host: "47.113.102.247"
 #    哨兵模式内网ip连接超时，暂直连
 #    sentinel:
-#      nodes: "47.113.102.247:26379,47.113.102.247:26380"
 #      master: mymaster
+#      nodes: 47.113.102.247:26379,47.113.102.247:26380,47.113.102.247:26381
+#    timeout: 100
 
   datasource:
     druid:
@@ -52,7 +53,7 @@ mybatis:
     map-underscore-to-camel-case: true
 logging:
   level:
-    com.sw.intergration: info
+    sw.personal: info
 
 
 

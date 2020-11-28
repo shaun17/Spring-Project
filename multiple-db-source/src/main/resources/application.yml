@@ -83,7 +83,8 @@ mybatis:
     map-underscore-to-camel-case: true
 logging:
   level:
-    com.sw.intergration: info
+    sw:
+      personal: info
 
 
 
