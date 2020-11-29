@@ -10,14 +10,14 @@ import org.springframework.data.redis.core.script.DefaultRedisScript;
 import org.springframework.stereotype.Service;
 
 /*
- *  使用redis的脚本实现分布式锁, 利用lua脚本原子性，返回锁资源
- *  完整的把分布工锁机制解决
+ *
  */
 
 /**
  * @Author wenrenhao
  * @Date 2020-11-29 00:32
  * @Version 1.0
+ * @Context  使用redis的脚本实现分布式锁, 利用lua脚本原子性，返回锁资源 完整的把分布工锁机制解决
  */
 
 @Service
@@ -39,11 +39,11 @@ public class RedisLockLuaScript {
     public boolean getLock(String key, String requestId) {
         long start = System.currentTimeMillis();
         StringBuilder lockScript = new StringBuilder();
-        lockScript.append("local ok = redis.call('setnx', 'nnl_")
+        lockScript.append("local ok = redis.call('setnx', '")
                 .append(key)
-                .append("', ARGV[1]);if ok == 1 then redis.call('expire', 'nnl_")
+                .append("', ARGV[1]);if ok == 1 then redis.call('expire', '")
                 .append(key)
-                .append("', 5) end; return ok");
+                .append("', 5001) end; return ok");
         while (true) {
             //返回参数不一样 按照类型分，主要看脚本返回什么，商品秒杀返回的是字符串，这里返回数字 5，
             DefaultRedisScript<Long> longDefaultRedisScript = new DefaultRedisScript<>(lockScript.toString(), Long.class);
@@ -53,8 +53,10 @@ public class RedisLockLuaScript {
                     //  String.valueOf(expireTimeMilliseconds) // ARGV[2]
             );
             Long ret = (Long) result;
-            if (ret != null && ret == 1)
+            if (ret != null && ret == 1){
                 return true;
+            }
+
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
@@ -83,21 +85,6 @@ public class RedisLockLuaScript {
                 //  String.valueOf(expireTimeMilliseconds) // ARGV[2]   过期时间
         );
         return SUCCESS.equals(result);
-    }
-
-
-    public static void main(String[] args) {
-        //测试代码逻辑，放在测试包下运行   用UUID去获得锁，然后用uuid去删除这个锁
-        String key = "locking";
-        String requestId = UUID.randomUUID().toString();
-	/*		boolean ret = RedisLockLuaScript.getLock(key,requestId);
-			 if(ret){
-				 System.out.println("成功获取到锁: 执行业务逻辑 时间较长的话，可能会失败，超时等");
-				 RedisLockLuaScript.releaseLock(key, requestId);
-				 System.out.println("释放锁----"+requestId);
-			 }else{
-				 System.out.println("获取锁失败----");
-			 }*/
     }
 
 }
