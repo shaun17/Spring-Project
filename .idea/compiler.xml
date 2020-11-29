@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="multiple-db-source" />
-        <module name="redis-project" />
-      </profile>
-    </annotationProcessing>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="multiple-db-source" options="-parameters" />
-      <module name="redis-project" options="-parameters" />
-    </option>
+    <bytecodeTargetLevel>
+      <module name="multiple-db-source" target="11" />
+      <module name="redis-project" target="11" />
+      <module name="spring-project-maven" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
