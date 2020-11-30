@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -20,11 +21,11 @@ public class ShoppingCart {
     @GetMapping("/addcart")
     public void addCart(int i){
         String proId = UUID.randomUUID().toString().replace("-", "");
-        redisTemplate.opsForHash().put(userid,proId, i);
+        redisTemplate.opsForHash().put(userid,proId, i+"");
     }
     @GetMapping("/cart")
-    public List cart(int i){
-        return  redisTemplate.opsForHash().values(i);
+    public Map cart(){
+        return  redisTemplate.opsForHash().entries(userid);
     }
     @GetMapping("/delcart")
     public Long delCart(String proId){
