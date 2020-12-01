@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -19,9 +20,9 @@ public class ShoppingCart {
     RedisTemplate redisTemplate;
 
     @GetMapping("/addcart")
-    public void addCart(int i){
+    public void addCart(@NotNull int number){
         String proId = UUID.randomUUID().toString().replace("-", "");
-        redisTemplate.opsForHash().put(userid,proId, i+"");
+        redisTemplate.opsForHash().put(userid,proId, number+"");
     }
     @GetMapping("/cart")
     public Map cart(){
