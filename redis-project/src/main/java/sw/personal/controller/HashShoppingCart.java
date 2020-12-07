@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.UUID;
 
 @RestController
-public class ShoppingCart {
+public class HashShoppingCart {
 
     private final String userid = UUID.randomUUID().toString().replace("-", "");
 

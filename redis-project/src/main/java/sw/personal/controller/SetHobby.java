@@ -11,9 +11,9 @@ import java.util.Set;
 import java.util.UUID;
 
 @RestController
-public class Hobby {
+public class SetHobby {
 
-    private final Logger log = LoggerFactory.getLogger(Hobby.class);
+    private final Logger log = LoggerFactory.getLogger(SetHobby.class);
     private final String userOne = UUID.randomUUID().toString().replace("-", "");
     private final String userTwo = UUID.randomUUID().toString().replace("-", "");
 

@@ -1,5 +1,8 @@
 package sw.personal.config;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties;
@@ -12,6 +15,9 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.listener.PatternTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
+import org.springframework.data.redis.listener.adapter.MessageListenerAdapter;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -28,10 +34,8 @@ public class RedisConfig {
 
     @Bean
     @ConditionalOnMissingBean(name = "redisTemplate")
-    public RedisTemplate<Object, Object> redisTemplate(
-            RedisConnectionFactory redisConnectionFactory) {
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         RedisTemplate<Object, Object> template = new RedisTemplate<>();
-
         // value值的序列化采用 StringRedisSerializer
         template.setValueSerializer(new Jackson2JsonRedisSerializer(Object.class));
         template.setHashValueSerializer(new StringRedisSerializer());
@@ -60,4 +64,43 @@ public class RedisConfig {
         template.setConnectionFactory(redisConnectionFactory);
         return template;
     }
+
+
+    @Bean
+    public Jackson2JsonRedisSerializer<Object> jackson2JsonSerializer() {
+        Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<>(
+                Object.class);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.enableDefaultTyping(ObjectMapper.DefaultTyping.NON_FINAL);
+        jackson2JsonRedisSerializer.setObjectMapper(mapper);
+        return jackson2JsonRedisSerializer;
+    }
+
+    /**
+     * redis消息监听器
+     */
+    @Bean
+    public MessageListenerAdapter lister(Jackson2JsonRedisSerializer jackson2JsonRedisSerializer, RedisReceiver redisReceiver) {
+        MessageListenerAdapter adapter = new MessageListenerAdapter(redisReceiver, "onMessage");
+        adapter.setSerializer(jackson2JsonRedisSerializer);
+        adapter.afterPropertiesSet();
+        return adapter;
+    }
+
+    /**
+     * 将订阅器绑定到容器
+     *
+     * @param connectionFactory
+     * @param listener
+     * @return
+     */
+    @Bean
+    public RedisMessageListenerContainer container(RedisConnectionFactory connectionFactory, MessageListenerAdapter listener) {
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+        container.addMessageListener(listener, new PatternTopic("/redis/*"));
+        return container;
+    }
+
 }

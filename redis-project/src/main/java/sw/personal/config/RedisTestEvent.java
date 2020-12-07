@@ -1,15 +1,16 @@
 package sw.personal.config;
 
 import org.springframework.context.ApplicationEvent;
+import org.springframework.stereotype.Component;
 
 import javax.security.auth.login.AppConfigurationEntry;
 
-public class RedisEvent extends ApplicationEvent {
+public class RedisTestEvent extends ApplicationEvent {
     private String eventContent;
-    public RedisEvent(Object source) {
+    public RedisTestEvent(Object source) {
         super(source);
     }
-    public RedisEvent(Object source, String eventContent){
+    public RedisTestEvent(Object source, String eventContent){
         super(source);
         this.eventContent = eventContent;
     }
