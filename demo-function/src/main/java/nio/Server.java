@@ -9,7 +9,7 @@ import java.nio.channels.SocketChannel;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 
-public class Server {
+public class  Server {
     public static void main(String[] args) throws IOException {
         //创建通道
         ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();

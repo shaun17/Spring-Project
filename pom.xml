@@ -61,6 +61,18 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
+        <!--  编码解码 -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.11</version>
+        </dependency>
+        <!-- OSS -->
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>3.8.0</version>
+        </dependency>
     </dependencies>
 
 
@@ -91,5 +103,7 @@
         <module>multiple-db-source</module>
         <module>redis-project</module>
         <module>demo-function</module>
+        <module>shrio-jwt</module>
+        <module>es-project</module>
     </modules>
 </project>
