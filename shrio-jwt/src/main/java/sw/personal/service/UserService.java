@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UserService {
     public List<User> queryByExample(String username);
-}
+    public List<User> queryByUserName(String username);
+
+    }

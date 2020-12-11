@@ -9,6 +9,8 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import sw.personal.po.Permission;
+import sw.personal.po.Role;
 import sw.personal.po.User;
 import sw.personal.service.UserService;
 
@@ -23,10 +25,11 @@ public class MyRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         // 能进入这里说明用户已经通过验证了
         User userInfo = (User) principalCollection.getPrimaryPrincipal();
+
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         for (Role role : userInfo.getRoles()) {
             simpleAuthorizationInfo.addRole(role.getRoleName());
-            for (Permission permission : role.getPers()) {
+            for (Permission permission : role.getPermissionList()) {
                 simpleAuthorizationInfo.addStringPermission(permission.getPermissionName());
             }
         }
@@ -40,14 +43,14 @@ public class MyRealm extends AuthorizingRealm {
         System.out.println(authenticationToken.getPrincipal());
         // 通过username从数据库中查找 UserInfo 对象
         // 实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
-        User userInfo = userInfoService.findByName(username);
+        User userInfo = userInfoService.queryByUserName(username).get(0);
         if (null == userInfo) {
             return null;
         }
 
         SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
                 userInfo, // 用户名
-                userInfo.getPassword(), // 密码
+                userInfo.getPasswd(), // 密码
                 ByteSource.Util.bytes(userInfo.getSalt()), // salt=username+salt
                 getName() // realm name
         );

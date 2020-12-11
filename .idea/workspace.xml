@@ -23,9 +23,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="30f29b93-bb30-4bce-9783-a179dc83062b" name="Default Changelist" comment="shrio">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/demo-function/src/main/java/string/Mian.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/service/UserRoleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/service/impl/UserRoleServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/po/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/po/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/po/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/shrio/MyRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/shrio/MyRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/shrio/jwt/JwtRealm.java" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/java/sw/personal/shrio/jwt/JwtRealm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/shrio-jwt/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shrio-jwt/src/main/resources/mapper/UserRoleMapper.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +198,7 @@
       <workItem from="1606538499183" duration="9892000" />
       <workItem from="1606732164468" duration="11107000" />
       <workItem from="1607072821885" duration="1177000" />
-      <workItem from="1607304451388" duration="23212000" />
+      <workItem from="1607304451388" duration="28276000" />
     </task>
     <task id="LOCAL-00001" summary="redis lock">
       <created>1606581709313</created>
@@ -245,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607431231333</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="shrio">
+      <created>1607560297166</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1607560297166</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -322,10 +340,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="394" key="#com.intellij.framework.addSupport.AddSupportForSingleFrameworkDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1606730971244" />
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1607430019449">
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser" timestamp="1607682781574">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1607430019449" />
+    <state x="765" y="204" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1607682781574" />
     <state x="559" y="432" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1607426588230">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -334,6 +352,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="387" width="480" height="273" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1607335003528" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1607675238977">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607675238977" />
     <state width="1877" height="251" key="GridCell.Tab.0.bottom" timestamp="1607430035216">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -382,10 +404,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="806" y="432" key="VCS.ChangelistChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1606785092055" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607431241257">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1607560299217">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1607431241257" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1607560299217" />
     <state x="759" y="297" key="chooseDestDirectoryDialog" timestamp="1607426596084">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
