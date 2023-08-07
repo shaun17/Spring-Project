@@ -16,4 +16,4 @@ es功能模块
 redis缓存模块，涉及到缓存和分布式锁
 
 ## shrio-jwt 
-验证模块，集成shrio和jwt两个功能联合验证
+验证模块，集成shrio和jwt两个功能联合验证 
